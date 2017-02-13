@@ -22,7 +22,7 @@ namespace HiringServiceTest
 	[TestFixture]
 	public class Hiring2OutSCompanyServiceTest
 	{
-		private Hiring2OutSCompanyService serviceUnderTest;
+        private Hiring2OutSCompanyService serviceUnderTest
 
 
 		[OneTimeSetUp]
