@@ -1,0 +1,101 @@
+﻿<UserControl x:Class="Common.UserControls.UserInputView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             xmlns:Entities="clr-namespace:Common.Entities"
+             xmlns:toolkit="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+             d:DesignHeight="400" d:DesignWidth="450">
+    <UserControl.Resources>
+        <ObjectDataProvider x:Key="RoleEnum" MethodName="GetValues"
+                            ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="Entities:Role"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="0" Header="User infomation" BorderThickness="2" Margin="5,0" VerticalContentAlignment="Center">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <GroupBox Grid.Column="0" Header="Name" BorderThickness="0" VerticalContentAlignment="Center">
+                    <TextBox VerticalAlignment="Center" Text="{Binding User.Name}"></TextBox>
+                </GroupBox>
+                <GroupBox Grid.Column="1" Header="SurName" BorderThickness="0"  VerticalContentAlignment="Center">
+                    <TextBox VerticalAlignment="Center" Text="{Binding User.Surname}"></TextBox>
+                </GroupBox>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="1" Header="Login infomation" BorderThickness="2" Margin="5,0" VerticalContentAlignment="Center">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <GroupBox Grid.Column="0" Grid.Row="0" Header="Username" BorderThickness="0" VerticalContentAlignment="Center">
+                    <TextBox VerticalAlignment="Center" Text="{Binding User.Username}"></TextBox>
+                </GroupBox>
+                <GroupBox Grid.Column="1" Grid.Row="0" Header="Email address" BorderThickness="0" VerticalContentAlignment="Center">
+                    <TextBox VerticalAlignment="Center" Text="{Binding User.MailAddress}"></TextBox>
+                </GroupBox>
+                <GroupBox Grid.Column="0" Grid.Row="1" Header="Password" BorderThickness="0"  VerticalContentAlignment="Center">
+                    <PasswordBox Name="passBox" VerticalAlignment="Center"></PasswordBox>
+                </GroupBox>
+                <GroupBox Grid.Column="1" Grid.Row="1" Header="Confirm Password" BorderThickness="0"  VerticalContentAlignment="Center">
+                    <PasswordBox Name="confirmPassBox"  VerticalAlignment="Center"></PasswordBox>
+                </GroupBox>
+            </Grid>
+        </GroupBox>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <GroupBox Grid.Column="0" Header="Type" BorderThickness="2" Margin="5,0" VerticalContentAlignment="Center">
+                <ComboBox ItemsSource="{Binding Source={StaticResource RoleEnum}}" SelectedItem="{Binding User.Role}"></ComboBox>
+            </GroupBox>
+            <GroupBox Grid.Column="1" Header="Team" BorderThickness="2" Margin="5,0" VerticalContentAlignment="Center">
+                <ComboBox></ComboBox>
+            </GroupBox>
+        </Grid>
+        <GroupBox Grid.Row="3" Header="Work time" BorderThickness="2" Margin="5,0" VerticalContentAlignment="Center">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <GroupBox Grid.Column="0" Header="Start time" BorderThickness="0" VerticalContentAlignment="Center">
+                    <toolkit:TimePicker Name="startTime" Value="{Binding User.StartTime}"></toolkit:TimePicker>
+                </GroupBox>
+                <GroupBox Grid.Column="1" Header="End Time" BorderThickness="0"  VerticalContentAlignment="Center">
+                    <toolkit:TimePicker Value="{Binding User.EndTime}"></toolkit:TimePicker>
+                </GroupBox>
+            </Grid>
+        </GroupBox>
+        <Grid Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Name="Save_btn" Grid.Column="0" Margin="5,2" Click="Save_Click">Save</Button>
+            <Button Name="Cancel_btn" Grid.Column="1" Margin="5,2" Click="Cancel_btn_Click" >Cancel</Button>
+        </Grid>
+    </Grid>
+</UserControl>
