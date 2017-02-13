@@ -22,7 +22,7 @@ namespace HiringServiceTest
 	[TestFixture]
 	public class Hiring2OutSCompanyServiceTest
 	{
-        private Hiring2OutSCompanyService serviceUnderTest
+        private Hiring2OutSCompanyService serviceUnderTest;
 
 
 		[OneTimeSetUp]
@@ -32,7 +32,7 @@ namespace HiringServiceTest
 			HiringCompanyDB.Instance = Substitute.For<IHiringCompanyDB>();
 
 			HiringCompanyDB.Instance.AddCompany(Arg.Is<Company>(x => x.Name == "dms")).Returns(true);
-			HiringCompanyDB.Instance.AddCompany(Arg.Is<Company>(x => x.Name != "dms")).Returns(false);
+            HiringCompanyDB.Instance.AddCompany(Arg.Is<Company>(x => x.Name != "dms")).Returns(false);
 
 			HiringCompanyDB.Instance.RemoveCompany(Arg.Is<Company>(x => x.Name == "dms")).Returns(true);
 			HiringCompanyDB.Instance.RemoveCompany(Arg.Is<Company>(x => x.Name != "dms")).Returns(false);
