@@ -43,8 +43,8 @@ namespace Client
             // Grouping projects
             CollectionView projectsView = (CollectionView)CollectionViewSource.GetDefaultView(projects.ItemsSource);
             PropertyGroupDescription projectGroupDescription = new PropertyGroupDescription("Status");
-            projectsView.GroupDescriptions.Add(projectGroupDescription)
-            LogHelper.GetLogger().Debug("Main window initialized.")
+            projectsView.GroupDescriptions.Add(projectGroupDescription);
+            LogHelper.GetLogger().Debug("Main window initialized.");
         }
 
         private void MainWindow_Initialized(object sender, EventArgs e)
