@@ -18,8 +18,8 @@ namespace Service
         public bool Introduce(Company company)
         {
 
-            callback = OperationContext.Current.GetCallbackChannel<IHiring2OutSourceContract_CallBack>();
-            Companies.Add(company.Name, callback);
+            Callback1 = OperationContext.Current.GetCallbackChannel<IHiring2OutSourceContract_CallBack>();
+            Companies.Add(company.Name, Callback1);
             return HiringCompanyDB.Instance.AddCompany(company);
 
         }
@@ -37,24 +37,23 @@ namespace Service
             }
         }
 
-        public static IHiring2OutSourceContract_CallBack Callback
-        {
-            get { return callback; }
-            set { callback = value; }
-        }
+        
 
         public static Dictionary<string, IHiring2OutSourceContract_CallBack> Companies
         {
             get
             {
-                return companies;
+                return Companies1;
             }
 
             set
             {
-                companies = value;
+                Companies1 = value;
             }
         }
+
+        public static Dictionary<string, IHiring2OutSourceContract_CallBack> Companies1 { get => companies; set => companies = value; }
+        public static IHiring2OutSourceContract_CallBack Callback1 { get => callback; set => callback = value; }
 
         public bool CloseCompany(Company company)
         {
