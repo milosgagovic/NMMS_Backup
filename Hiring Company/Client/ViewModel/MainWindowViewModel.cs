@@ -31,8 +31,8 @@ namespace Client.ViewModel
             string executable = System.Reflection.Assembly.GetExecutingAssembly().Location;
             string path = System.IO.Path.GetDirectoryName(executable);
             path = path.Substring(0, path.LastIndexOf("NMMS")) + "NMMS/Common";
-            EditIcon = new BitmapImage(new Uri(path + "/Images/edit.png"));
-            RemoveIcon = new BitmapImage(new Uri(path + "/Images/delete.png"));
+           // EditIcon = new BitmapImage(new Uri(path + "/Images/edit.png"));
+            //RemoveIcon = new BitmapImage(new Uri(path + "/Images/delete.png"));
             Proxy = App.Proxy;
 
         }
